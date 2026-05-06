@@ -1,6 +1,8 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/benzahxe/repos/crud-laravel
-    - /bin/bash -c "cd $DEPLOYPATH && php artisan config:clear 2>&1"
-    - /bin/bash -c "cd $DEPLOYPATH && php artisan view:clear 2>&1"
+    - export DEPLOYPATH=/home/agrogana/repositories/CRUD-lista-tareas-laravel
+    - export PHP=/opt/cpanel/ea-php84/root/usr/bin/php
+    - /bin/bash -c "cd $DEPLOYPATH && $PHP artisan config:cache 2>&1"
+    - /bin/bash -c "cd $DEPLOYPATH && $PHP artisan route:cache 2>&1"
+    - /bin/bash -c "cd $DEPLOYPATH && $PHP artisan view:cache 2>&1"
