@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/benzahxe/repos/crud-laravel
+    - /bin/bash -c "cd $DEPLOYPATH && php artisan config:clear 2>&1"
+    - /bin/bash -c "cd $DEPLOYPATH && php artisan view:clear 2>&1"
