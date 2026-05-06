@@ -33,11 +33,13 @@
                     <td><strong>{{ $task->title }}</strong></td>
                     <td>{{ Str::limit($task->description, 60) }}</td>
                     <td>
-                        @if($task->status === 'completed')
-                            <span class="badge bg-success">Completada</span>
-                        @else
-                            <span class="badge bg-warning text-dark">Pendiente</span>
-                        @endif
+                        <form action="{{ route('tasks.toggle', $task) }}" method="POST">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit" class="badge border-0 {{ $task->status === 'completed' ? 'bg-success' : 'bg-warning text-dark' }}" style="cursor:pointer">
+                                {{ $task->status === 'completed' ? 'Completada' : 'Pendiente' }}
+                            </button>
+                        </form>
                     </td>
                     <td>{{ $task->created_at->format('d/m/Y') }}</td>
                     <td class="text-center">

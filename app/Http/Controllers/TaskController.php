@@ -63,4 +63,14 @@ class TaskController extends Controller
         return redirect()->route('tasks.index')
             ->with('success', 'Tarea eliminada correctamente.');
     }
+
+    public function toggleStatus(Task $task)
+    {
+        $task->update([
+            'status' => $task->status === 'pending' ? 'completed' : 'pending',
+        ]);
+
+        return redirect()->route('tasks.index')
+            ->with('success', 'Estado actualizado correctamente.');
+    }
 }
